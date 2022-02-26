@@ -11,7 +11,7 @@
       <div class="textField"
            :style="{color: text_color, background: text_bg_color}"
       >
-        "{{$store.state.blurb}}"
+        "{{$store.getters.active.blurb}}"
       </div>
     </component>
   </div>

@@ -38,15 +38,15 @@
 <script>
 import Page from "./Page";
 import AvatarBox from "../../AvatarBox";
-import Perk from "@/components/GUI/Perk"
-import perks from "@/components/GUI/perks.js"
+import Perk from "@/components/GUI/Perk";
+import perks from "@/components/GUI/perks.js";
 
 export default {
   name: "StatusPage",
   components: {AvatarBox, Page, Perk},
   computed: {
     perk_list() {
-      return this.$store.state.perks.map(p => [p, perks[p]]);
+      return this.$store.sactive.perks.map(p => [p, perks[p]]);
     }
   }
 }

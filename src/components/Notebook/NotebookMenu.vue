@@ -1,7 +1,7 @@
 <template>
   <div class="__menu__" :class="{open}">
-    <div class="scene">
-      <div class="notebook">
+    <div class="scene" :style="notebook_translation">
+      <div class="notebook" :style="{'transform':`scale(${this.scale_factor})`}">
         <div class="front_cover">
           <div class="face front cover"></div>
           <div class="face back cover"></div>
@@ -59,6 +59,8 @@ export default {
     return {
       active_tab: 1,
       opened: false,
+      scale_factor: 1,
+      notebook_translation: ''
     }
   },
   watch: {
@@ -71,6 +73,32 @@ export default {
         // slide book down
       }
     },
+  },
+  mounted() {
+    window.addEventListener('resize', this.screen_resized);
+    this.screen_resized();
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.screen_resized);
+  },
+  methods: {
+    screen_resized() {
+      const nb_width = 550;
+      const nb_height = 750;
+      const padding = 0;
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      let scale = screenWidth/(nb_width+padding);
+      if (((nb_height + padding) * scale) > screenHeight) {
+        scale = screenHeight/(nb_height+padding);
+      }
+      this.scale_factor = scale;
+
+      const bw = ((screenWidth - (nb_width)) / 2);
+      const sh = ((screenHeight - (nb_height)) / 2);
+      this.notebook_translation =  {transform: `translateX(${bw}px) translateY(${sh}px)`};
+
+    }
   },
   computed: {
     active_page() {
@@ -113,6 +141,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 100;
   pointer-events: none;
   transform: translateY(100vh);
   transition: transform 1s ease;
@@ -148,8 +177,6 @@ export default {
   .scene {
     z-index: 1000;
     position: absolute;
-    top: 300px;
-    left: 40vw;
     width: 200px;
     height: 200px;
     perspective: 2860px;

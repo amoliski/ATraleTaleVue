@@ -1,12 +1,12 @@
 <template>
   <div class="__mobile_stat_bars__">
     <div>
-      <Border_box class="bar_title" :style="title_style.top">F</Border_box>
-      <Border_box class="bar_title" :style="title_style.bottom">M</Border_box>
+      <Border_box class="bar_title" padding="0" :style="title_style.top">F</Border_box>
+      <Border_box class="bar_title" padding="0" :style="title_style.bottom">M</Border_box>
     </div>
     <div>
       <Border_box padding="0" class="bar" :style="bar_style">
-        <div :style="{width: `${fatigue}%`}" class="fatigue progress"></div>
+        <div :style="{width: `${$store.getters.active.fortitude}%`}" class="fatigue progress"></div>
       </Border_box>
       <Border_box
           padding="0"
@@ -15,7 +15,7 @@
             height: `${border_size+40}px`,
             transform: `translateY(-${border_size}px) translateX(-${border_size}px)`
           }">
-        <div :style="{width: `${mood}%`}" class="mood progress"></div>
+        <div :style="{width: `${$store.getters.active.sanity}%`}" class="mood progress"></div>
       </Border_box>
     </div>
   </div>
@@ -23,6 +23,7 @@
 
 <script>
 import Border_box from "./BorderBox";
+
 export default {
   name: "MobileStatBars",
   components: {Border_box},
@@ -33,10 +34,6 @@ export default {
   },
   data() {
     return {
-      fatigue: 80,
-      targetFatigue: 20,
-      mood: 90,
-      targetMood: 30,
       stop: false,
       barHeight: 28,
     }
@@ -44,12 +41,9 @@ export default {
   beforeDestroy() {
     this.stop = true;
   },
-  created(){
-    this.animate_frame();
-  },
   computed: {
     border_size() {
-      return +this.$root.border_size;
+      return +this.$root.border_size -4;
     },
     title_style() {
       const top = { height: `${this.border_size+40}px`, width: `${this.border_size+40}px` };
@@ -59,32 +53,11 @@ export default {
       return {
         height: `${this.border_size+40}px`,
         transform: `translateX(-${this.border_size}px)`,
-        width: `calc(100vw - 225px)`
+        width: `calc(100vw - 255px)`
       }
     },
   },
-  methods: {
-    set_target() {
-      //console.log(Math.abs(this.targetMood - this.mood))
-      if (Math.abs(this.targetMood - this.mood) < 0.1) {
-        this.targetMood = Math.floor(Math.random()*100);
-      }
-      if (Math.abs(this.targetFatigue - this.fatigue) < 0.1) {
-        this.targetFatigue = Math.floor(Math.random()*100);
-      }
-    },
-    animate_frame(){
-      requestAnimationFrame(() => {
-        if (this.stop) {
-          return;
-        }
-        this.fatigue = this.fatigue + (this.targetFatigue - this.fatigue) * .1;
-        this.mood = this.mood + (this.targetMood - this.mood) * .025;
-        this.set_target();
-        this.animate_frame();
-      })
-    },
-  }
+
 }
 </script>
 
@@ -101,6 +74,7 @@ export default {
   }
   .progress {
     height: 100%;
+    transition: width 1s ease;
   }
   .fatigue{
     background-color: #f0d163;

@@ -39,6 +39,18 @@
           <button @click="toggle_display('Alex','FALSE')">Hide</button>
         </div>
 
+        <div class="row" v-if="this.active_scene && this.active_scene.indexOf('hike_') === 0">
+          <div class="title">Show Bubble</div>
+          <div>
+            <select name="alex_outfit" v-model="selected_bubble" :disabled="!private_active_scene">
+              <option value="Walk">Walk</option>
+              <option value="WalkRain">WalkRain</option>
+            </select>
+          </div>
+          <button @click="toggle_display('Bubble','TRUE')">Show</button>
+          <button @click="toggle_display('Bubble','FALSE')">Hide</button>
+        </div>
+
         <div class="row" v-if='this.active_scene === "interstitials"'>
           <div class="title">Interstitials</div>
           <div>
@@ -170,6 +182,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 100;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;

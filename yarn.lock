@@ -8363,6 +8363,11 @@
     "vue-hot-reload-api" "^2.3.0"
     "vue-style-loader" "^4.1.0"
 
+"vue-resize-text@^0.1.1":
+  "integrity" "sha512-teQjTzJpwYdBKG2hOc7lA6U3hUNuew3nROuPLPRzX1wxSgG/tQ+YNOHobxXxuIKf36zFTs68y2Y0JY1zx7fZrg=="
+  "resolved" "https://registry.npmjs.org/vue-resize-text/-/vue-resize-text-0.1.1.tgz"
+  "version" "0.1.1"
+
 "vue-router@^3.2.0":
   "integrity" "sha512-807gn82hTnjCYGrnF3eNmIw/dk7/GE4B5h69BlyCK9KHASwSloD1Sjcn06zg9fVG4fYH2DrsNBZkpLtb25WtaQ=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-3.5.2.tgz"

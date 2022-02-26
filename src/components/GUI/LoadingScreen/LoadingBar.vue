@@ -16,7 +16,6 @@ export default {
   },
   mounted() {
     const load_progress = (e) => {
-      console.log(e);
       this.progress = e;
     }
 
@@ -33,7 +32,7 @@ export default {
 .__loading_bar__ {
   background-color: #1a3722;
   width: auto;
-  margin: 25px 0 0;
+  margin: 11px 0 0;
   box-sizing: content-box;
   height: 35px;
   .progress {

@@ -1,12 +1,16 @@
 <template>
   <div class="__stat_bars__">
     <div>
-      <Border_box class="bar_title" :style="title_style.top">F</Border_box>
-      <Border_box class="bar_title" :style="title_style.bottom">M</Border_box>
+      <Border_box class="bar_title" :padding="0" :style="title_style.top">
+        <span>F</span>
+      </Border_box>
+      <Border_box class="bar_title" :padding="0" :style="title_style.bottom">
+        <span>M</span>
+      </Border_box>
     </div>
     <div>
       <Border_box padding="0" class="bar" :style="bar_style">
-        <div :style="{width: `${$store.state.fortitude}%`}" class="fatigue progress"></div>
+        <div :style="{width: `${$store.getters.active.fortitude}%`}" class="fatigue progress"></div>
       </Border_box>
       <Border_box
           padding="0"
@@ -15,7 +19,7 @@
             height: `${border_size+40}px`,
             transform: `translateY(-${border_size}px) translateX(-${border_size}px)`
           }">
-        <div :style="{width: `${$store.state.sanity}%`}" class="mood progress"></div>
+        <div :style="{width: `${$store.getters.active.morale}%`}" class="mood progress"></div>
       </Border_box>
     </div>
   </div>
@@ -29,19 +33,12 @@ export default {
   components: {Border_box},
   data() {
     return {
-      stop: false,
       barHeight: 28,
     }
   },
-  beforeDestroy() {
-    this.stop = true;
-  },
-  created(){
-    //this.animate_frame();
-  },
   computed: {
     border_size() {
-      return +this.$root.border_size;
+      return +this.$root.border_size - 4;
     },
     title_style() {
       const top = { height: `${this.border_size+40}px`, width: `${this.border_size+40}px` };
@@ -65,9 +62,14 @@ export default {
 
   .bar_title {
     font-weight: bold;
+    font-size: 1.5em;
+    > span {
+      display: block;
+      transform: translateX(0) translateY(-4px);
+    }
   }
    .bar {
-     height: 30px;
+     height: 20px;
    }
   .progress {
     height: 100%;

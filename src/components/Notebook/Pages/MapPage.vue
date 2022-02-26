@@ -1,7 +1,7 @@
 <template>
   <Page class="__map_page__">
     <template v-slot:head>
-      <h1>Last Updated <b>18 hours ago</b></h1>
+      <h1>Last Updated <b>{{last_edit}} hours ago</b></h1>
     </template>
     <div class="grid">
       <div  class="arrow up_arrow">
@@ -33,6 +33,11 @@ export default {
   components: {Page},
   directives: {
     dragscroll
+  },
+  data() {
+    return {
+      last_edit: '2000'
+    }
   },
   methods: {
     scroll_up() {

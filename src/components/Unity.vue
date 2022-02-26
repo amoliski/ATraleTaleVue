@@ -32,21 +32,12 @@ export default {
       loaded: false,
     };
   },
-  watch: {
-    '$store.state.scene': {
-      immediate: true,
-      handler(e, o){
-        if(e && e!==o && this.loaded) {
-          EventBus.$emit('unity_message', {
-            method: 'changeScene',
-            message: e,
-          });
-        }
-      }
-    }
-  },
   mounted() {
     const send_message = ({method, message}) => {
+      if (!this.unity) {
+        console.log('unity not mounted, can\'t send message', method, message);
+        return;
+      }
       console.log("Sending: WebInterface", {method, message});
       this.unity.SendMessage('WebInterface', method, message);
     }
@@ -61,7 +52,7 @@ export default {
     let fn = () => {
       EventBus.$emit('unity_message', {
         method: 'changeScene',
-        message: this.$store.state.scene,
+        message: this.$store.getters.active.scene,
       })
     }
     window.messagePump.registerListener('scene_loaded', () =>{

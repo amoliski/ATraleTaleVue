@@ -1,69 +1,70 @@
-import Bored from '@/assets/perks/Bored.png'
-// import Bubble from '@/assets/perks/Bubble.png'
-import Buggy from '@/assets/perks/Buggy.png'
-import Crowds from '@/assets/perks/Crowds.png'
-import Damaged_Gear from '@/assets/perks/Damaged-Gear.png'
-import Determined from '@/assets/perks/Determined.png'
-import Dirty from '@/assets/perks/Dirty.png'
-import Elevation from '@/assets/perks/Elevation.png'
-import Encumbered from '@/assets/perks/Encumbered.png'
-import Entertained from '@/assets/perks/Entertained.png'
-import Existential from '@/assets/perks/Existential.png'
-import Fatigue from '@/assets/perks/Fatigue.png'
-import Freezing from '@/assets/perks/Freezing.png'
-import Good_Company from '@/assets/perks/Good-Company.png'
-import Homesick from '@/assets/perks/Homesick.png'
-import Hot from '@/assets/perks/Hot.png'
-import inclement_weather from '@/assets/perks/inclement-weather.png'
-import Injured from '@/assets/perks/Injured.png'
-import Inspired from '@/assets/perks/Inspired.png'
-import Light_on_my_feet from '@/assets/perks/Light-on-my-feet.png'
-import Lonely from '@/assets/perks/Lonely.png'
-import Lovely_Weather from '@/assets/perks/Lovely-Weather.png'
-import New_Gear from '@/assets/perks/New-Gear.png'
-import Parched from '@/assets/perks/Parched.png'
-import Picturesque from '@/assets/perks/Picturesque.png'
-import Rough_Trail from '@/assets/perks/Rough-Trail.png'
-import Sick from '@/assets/perks/Sick.png'
-import Slow_Going from '@/assets/perks/Slow Going.png'
-import Soaked from '@/assets/perks/Soaked.png'
-import Sore from '@/assets/perks/Sore.png'
-import Well_Rested from '@/assets/perks/Well-Rested.png'
-import Wildlife from '@/assets/perks/Wildlife.png'
+import bored from '@/assets/perks/bored.png';
+import buggy from '@/assets/perks/buggy.png';
+import craving from '@/assets/perks/craving.png';
+import crowds from '@/assets/perks/crowds.png';
+import damaged_gear from '@/assets/perks/damaged_gear.png';
+import determined from '@/assets/perks/determined.png';
+import dirty from '@/assets/perks/dirty.png';
+import elevation from '@/assets/perks/elevation.png';
+import encumbered from '@/assets/perks/encumbered.png';
+import entertained from '@/assets/perks/entertained.png';
+import existential from '@/assets/perks/existential.png';
+import fatigue from '@/assets/perks/fatigue.png';
+import freezing from '@/assets/perks/freezing.png';
+import good_company from '@/assets/perks/good_company.png';
+import homesick from '@/assets/perks/homesick.png';
+import hot from '@/assets/perks/hot.png';
+import inclement_weather from '@/assets/perks/inclement_weather.png';
+import injured from '@/assets/perks/injured.png';
+import inspired from '@/assets/perks/inspired.png';
+import light_on_my_feet from '@/assets/perks/light_on_my_feet.png';
+import lonely from '@/assets/perks/lonely.png';
+import lovely_weather from '@/assets/perks/lovely_weather.png';
+import new_gear from '@/assets/perks/new_gear.png';
+import parched from '@/assets/perks/parched.png';
+import picturesque from '@/assets/perks/picturesque.png';
+import rough_trail from '@/assets/perks/rough_trail.png';
+import slow_going from '@/assets/perks/slow_going.png';
+import sick from '@/assets/perks/sick.png';
+import soaked from '@/assets/perks/soaked.png';
+import sore from '@/assets/perks/sore.png';
+import well_rested from '@/assets/perks/well_rested.png';
+import wildlife from '@/assets/perks/wildlife.png';
+
 
 export default {
-  'Bored': {img: Bored, fortitude: 0, sanity: -20},
-  'Buggy': {img: Buggy, fortitude: -10, sanity: -10},
-  'Crowds': {img: Crowds, fortitude: 0, sanity: -10},
-  'Damaged Gear': {img: Damaged_Gear, fortitude: -10, sanity: 0},
-  'Determined': {img: Determined, fortitude: 20, sanity: 60},
-  'Dirty': {img: Dirty, fortitude: -10, sanity: 0},
-  'Elevation': {img: Elevation, fortitude: -10, sanity: 0},
-  'Encumbered': {img: Encumbered, fortitude: -10, sanity: -20},
-  'Entertained': {img: Entertained, fortitude: 0, sanity: 30},
-  'Exceptional Wildlife': {img: Wildlife, fortitude: 0, sanity: 20},
-  'Existential': {img: Existential, fortitude: 0, sanity: 20},
-  'Fatigue': {img: Fatigue, fortitude: -20, sanity: -20},
-  'Freezing': {img: Freezing, fortitude: -20, sanity: -10},
-  'Good-Company': {img: Good_Company, fortitude: 0, sanity: 30},
-  'Homesick': {img: Homesick, fortitude: 0, sanity: -20},
-  'Hot': {img: Hot, fortitude: -10, sanity: -10},
-  'Hunger Cravings': {img: Hot, fortitude: -10, sanity: -20},
-  'Inclement  Weather': {img: inclement_weather, fortitude: 0, sanity: -30},
-  'Injured': {img: Injured, fortitude: -40, sanity: -10},
-  'Inspired': {img: Inspired, fortitude: 0, sanity: 30},
-  'Light on My Feet': {img: Light_on_my_feet, fortitude: 20, sanity: 10},
-  'Lonely': {img: Lonely, fortitude: 0, sanity: -30},
-  'Lovely Weather': {img: Lovely_Weather, fortitude: 10, sanity: 30},
-  'New Gear': {img: New_Gear, fortitude: 20, sanity: 20},
-  'Parched': {img: Parched, fortitude: -10, sanity: 0},
-  'Picturesque': {img: Picturesque, fortitude: 0, sanity: 20},
-  'Rough Trail': {img: Rough_Trail, fortitude: -10, sanity: 0},
-  'Sick': {img: Sick, fortitude: -40, sanity: -20},
-  'Slow Going': {img: Slow_Going, fortitude: 0, sanity: 0},
-  'Soaked': {img: Soaked, fortitude: -20, sanity: -10},
-  'Sore': {img: Sore, fortitude: -10, sanity: -10},
-  'Well-Rested': {img: Well_Rested, fortitude: 20, sanity: 20},
+  'bored': {name: 'Bored', img: bored, fortitude: 0, sanity: -20},
+  'buggy': {name: 'Buggy', img: buggy, fortitude: -10, sanity: -10},
+  'crowds': {name: 'Crowds', img: crowds, fortitude: 0, sanity: -10},
+  'damaged gear': {name: 'Damaged Gear', img: damaged_gear, fortitude: -10, sanity: 0},
+  'determined': {name: 'Determined', img: determined, fortitude: 20, sanity: 60},
+  'dirty': {name: 'Dirty', img: dirty, fortitude: -10, sanity: 0},
+  'elevation': {name: 'Elevation', img: elevation, fortitude: -10, sanity: 0},
+  'encumbered': {name: 'Encumbered', img: encumbered, fortitude: -10, sanity: -20},
+  'entertained': {name: 'Entertained', img: entertained, fortitude: 0, sanity: 30},
+  'exceptional wildlife': {name: 'Exceptional Wildlife', img: wildlife, fortitude: 0, sanity: 20},
+  'existential': {name: 'Existential', img: existential, fortitude: 0, sanity: 20},
+  'fatigue': {name: 'Fatigue', img: fatigue, fortitude: -20, sanity: -20},
+  'freezing': {name: 'Freezing', img: freezing, fortitude: -20, sanity: -10},
+  'good-company': {name: 'Good-Company', img: good_company, fortitude: 0, sanity: 30},
+  'homesick': {name: 'Homesick', img: homesick, fortitude: 0, sanity: -20},
+  'hot': {name: 'Hot', img: hot, fortitude: -10, sanity: -10},
+  'craving': {name: 'Craving', img: craving, fortitude: -10, sanity: -20},
+  'inclement  weather': {name: 'Inclement  Weather', img: inclement_weather, fortitude: 0, sanity: -30},
+  'injured': {name: 'Injured', img: injured, fortitude: -40, sanity: -10},
+  'inspired': {name: 'Inspired', img: inspired, fortitude: 0, sanity: 30},
+  'light on my feet': {name: 'Light on My Feet', img: light_on_my_feet, fortitude: 20, sanity: 10},
+  'lonely': {name: 'Lonely', img: lonely, fortitude: 0, sanity: -30},
+  'lovely weather': {name: 'Lovely Weather', img: lovely_weather, fortitude: 10, sanity: 30},
+  'new gear': {name: 'New Gear', img: new_gear, fortitude: 20, sanity: 20},
+  'parched': {name: 'Parched', img: parched, fortitude: -10, sanity: 0},
+  'picturesque': {name: 'Picturesque', img: picturesque, fortitude: 0, sanity: 20},
+  'rough trail': {name: 'Rough Trail', img: rough_trail, fortitude: -10, sanity: 0},
+  'sick': {name: 'Sick', img: sick, fortitude: -40, sanity: -20},
+  'slow going': {name: 'Slow Going', img: slow_going, fortitude: 0, sanity: 0},
+  'soaked': {name: 'Soaked', img: soaked, fortitude: -20, sanity: -10},
+  'sore': {name: 'Sore', img: sore, fortitude: -10, sanity: -10},
+  'well-rested': {name: 'Well-Rested', img: well_rested, fortitude: 20, sanity: 20},
 }
 
 
