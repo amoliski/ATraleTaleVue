@@ -47,6 +47,7 @@ export default {
 <style lang="scss">
 .__info_display__ {
   position: absolute;
+  pointer-events: all;
   top: 0;
   bottom: 0;
   left: 0;

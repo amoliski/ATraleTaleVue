@@ -8,8 +8,9 @@
         :enable_audio="enable_audio" @toggle_audio="toggle_audio"
     />
     <AudioController :loading="loading" :audio_enabled="enable_audio"/>
-    <Main_GUI class="desktop" @toggle_audio="toggle_audio" style="z-index:4"></Main_GUI>
-    <Mobile_GUI class="mobile" @toggle_audio="toggle_audio" style="z-index:4"></Mobile_GUI>
+    <BlurbController/>
+    <Main_GUI class="desktop" @toggle_audio="toggle_audio" style="z-index:50"></Main_GUI>
+    <Mobile_GUI class="mobile" @toggle_audio="toggle_audio" style="z-index:50"></Mobile_GUI>
     <Unity style="z-index:1"/>
   </div>
 </template>
@@ -22,6 +23,7 @@ import Mobile_GUI from '@/components/GUI/Mobile_GUI.vue'
 import Loading_Screen from '@/components/GUI/LoadingScreen/Loading_Screen.vue'
 import SceneController from '@/components/Controllers/SceneController.vue'
 import AudioController from '@/components/Controllers/AudioController.vue'
+import BlurbController from '@/components/Controllers/BlurbController.vue'
 
 export default {
   name: 'Home',
@@ -31,7 +33,8 @@ export default {
     Mobile_GUI,
     Loading_Screen,
     SceneController,
-    AudioController
+    AudioController,
+    BlurbController
   },
   mounted() {
     window.messagePump.registerListener(

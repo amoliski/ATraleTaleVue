@@ -1,39 +1,42 @@
 <template>
-  <div class="__menu__" :class="{open}">
-    <div class="scene" :style="notebook_translation">
-      <div class="notebook" :style="{'transform':`scale(${this.scale_factor})`}">
-        <div class="front_cover">
-          <div class="face front cover"></div>
-          <div class="face back cover"></div>
-          <div class="face left side"></div>
-          <div class="face right side"></div>
-          <div class="face top_corner"></div>
-          <div class="face top_corner a"></div>
-          <div class="face top_corner b"></div>
-          <div class="face top_corner c"></div>
-          <div class="face top_corner d"></div>
-          <div class="face top_corner e"></div>
-          <div class="face bottom_corner a"></div>
-          <div class="face bottom_corner b"></div>
-          <div class="face bottom_corner c"></div>
-          <div class="face bottom_corner d"></div>
-          <div class="face top"></div>
-          <div class="face bottom"></div>
-        </div>
-
-        <!--div class="page_fold"></div-->
-
-        <div class="notebook_pages">
-          <NotebookTabs class='tabs' :active_tab="active_tab" @change_tab="active_tab = $event"/>
-          <div class="pages">
-            <component :is="active_page"></component>
+  <div class="__menu__" :class="{open}" @click="bg_click">
+    <div class="scene_container">
+      <div class="scene" :style="notebook_translation">
+        <div class="notebook" :style="{'transform':`scale(${this.scale_factor})`}">
+          <div class="front_cover">
+            <div class="face front cover"></div>
+            <div class="face back cover"></div>
+            <div class="face left side"></div>
+            <div class="face right side"></div>
+            <div class="face top_corner"></div>
+            <div class="face top_corner a"></div>
+            <div class="face top_corner b"></div>
+            <div class="face top_corner c"></div>
+            <div class="face top_corner d"></div>
+            <div class="face top_corner e"></div>
+            <div class="face bottom_corner a"></div>
+            <div class="face bottom_corner b"></div>
+            <div class="face bottom_corner c"></div>
+            <div class="face bottom_corner d"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
           </div>
+
+          <!--div class="page_fold"></div-->
+
+          <div class="notebook_pages">
+            <NotebookTabs class='tabs' :active_tab="active_tab" @change_tab="active_tab = $event"/>
+            <div class="pages">
+              <component :is="active_page"></component>
+            </div>
+          </div>
+
+          <div class="back_cover"></div>
         </div>
 
-        <div class="back_cover"></div>
       </div>
-
     </div>
+
   </div>
 </template>
 
@@ -82,6 +85,12 @@ export default {
     window.removeEventListener('resize', this.screen_resized);
   },
   methods: {
+    bg_click(e) {
+      console.log(e.target.className)
+      if(e.target.className.indexOf('__menu__') !== -1){
+        this.$emit('close');
+      }
+    },
     screen_resized() {
       const nb_width = 550;
       const nb_height = 750;
@@ -141,33 +150,51 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 110;
   pointer-events: none;
-  transform: translateY(100vh);
-  transition: transform 1s ease;
+  background: transparent;
+  transition: background-color 1s ease;
+  &.open{
+    background: rgba(0,0,0,0.6);
+    pointer-events: all;
+  }
+
   .front_cover {
     transform: rotateY(0deg) translateZ(13px) translateY(5px) translateX(-33px);
-    transition-delay: 0s;
+    transition-delay: .5s;
     z-index: 500;
+    transition: transform .75s ease;
+    transform-origin: 4px;
+  }
+  &.open .front_cover{
+    transition-delay: .75s;
+    transform: rotateY(-351deg) translateZ(-56px) translateY(7px) translateX(-33px);
+    // transform: rotateY(-180deg) translateZ(-56px) translateY(7px) translateX(-33px);
+    z-index: 0;
+  }
+
+  .scene_container{
+    transform: translateY(100vh);
     transition: transform 1s ease;
-    transform-origin: -10px;
+  }
+  &.open .scene_container {
+      transform: translateY(0);
+  }
+  .page_fold{
+    transform: translateZ(66px);
+    transform-style: preserve-3d;
   }
   &.open {
-    transform: translateY(0);
-    .front_cover{
-      transition-delay: .5s;
-      transform: rotateY(-351deg) translateZ(-56px) translateY(7px) translateX(-33px);
-      z-index: 0;
-    }
     .page_fold {
-      animation-name: fold;
-      animation-duration: 4s;
+
+      // animation-name: fold;
+      // animation-duration: 4s;
       // animation-direction: alternate;
       // animation-iteration-count: infinite;
-      animation-direction: reverse;
-      animation-iteration-count: 1;
-      transform-origin:left;
-      animation-fill-mode: both;
+      // animation-direction: reverse;
+      // animation-iteration-count: 1;
+      // transform-origin:left;
+      // animation-fill-mode: both;
     }
   }
   * {

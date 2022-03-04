@@ -78,7 +78,7 @@
 
 <script>
 import BorderBox from '@/components/BorderBox';
-import BorderButton from "../BorderButton";
+import BorderButton from "@/components/BorderButton";
 
 export default {
   name: "LocationDemo",
@@ -86,7 +86,7 @@ export default {
   props: ['open'],
   data() {
     return {
-      scene: 'mountain',
+      scene: 'forest',
       weather: 'clear',
       time: 'midday',
     }
@@ -203,6 +203,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: all;
 
   .dialog_bottom{
     margin: 1.5em -5px -5px -5px;;

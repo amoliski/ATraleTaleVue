@@ -10,11 +10,11 @@
         <div class="top_left" v-if="!live_mode">
           <div class="location_block">
             <BorderBox padding="3">
-              <div style="background: #fff1e0; height: 104px">
+              <div style="background: #fff1e0; height:75px">
                 <h1 class="page_title">
                   A Trail Tale
                 </h1>
-                <p>
+                <p style="font-size: 0.9em">
                   Full site to launch <span style="color: #d9935e;">April 4th</span>
                 </p>
               </div>
@@ -33,7 +33,9 @@
         <div class="top_right" style="width: 75px" v-if="!live_mode">
           <BorderButton @click="info_display_open = !info_display_open">
             <div class="about_button">
-              <div class="icon">?</div>
+              <div class="icon">
+                <img src="@/assets/question.png"/>
+              </div>
               <div class="text">About</div>
             </div>
           </BorderButton>
@@ -48,7 +50,7 @@
             </BorderBox>
           </button>
 
-          <button @click="debug_menu_open = !debug_menu_open" style="margin-top: 5px;">
+          <button @click="debug_menu_open = !debug_menu_open" style="margin-top: 5px;" v-if="false">
             <BorderBox padding=3 :style="{width: '80px', overflow: 'hidden'}">
               <div>
                 <img height='30px' src="@/assets/icons/debug.png" alt="">
@@ -148,12 +150,14 @@ export default {
   height: 100%;
   width: 100%;
   color: #36634d;
+  pointer-events: none;
   .page_title{
     font-size: 3em;
     text-align: start
   }
 
   .scene_mood_button{
+    pointer-events: all;
     display: flex;
     flex-direction:column;
     font-family: 'Pexico';
@@ -169,14 +173,16 @@ export default {
     }
   }
   .about_button{
+    pointer-events: all;
     display: flex;
     flex-direction:column;
     font-family: 'Pexico';
     align-items: center;
     width: 50px;
     height: 50px;
-    .icon {
-      font-size: 2.8em;
+    .icon img{
+      width: 30px;
+      margin-top: -5px;
     }
     .text {
       font-size: 1em;

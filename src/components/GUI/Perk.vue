@@ -1,5 +1,5 @@
 <template>
-  <div class="__perk__" :style="style"/>
+  <div class="__perk__" :style="style" :class="perk"/>
 </template>
 
 <script>

@@ -46,7 +46,7 @@ export default {
   components: {AvatarBox, Page, Perk},
   computed: {
     perk_list() {
-      return this.$store.sactive.perks.map(p => [p, perks[p]]);
+      return this.$store.getters.active.perks.map(p => [p, perks[p]]);
     }
   }
 }

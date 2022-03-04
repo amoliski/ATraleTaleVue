@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import Vuex from 'vuex'
 import axios from 'axios'
+import get_scene from "./scene_picker";
 
 Vue.use(Vuex);
 
@@ -19,6 +20,7 @@ const store = new Vuex.Store({
       morale: 0,
       expression: null,
       perks: [],
+      blurbs: [],
       blurb: '',
       location: '',
       timestamp: 0,
@@ -28,13 +30,36 @@ const store = new Vuex.Store({
     demo:{
       fortitude:77,
       morale:83,
+      blurbs: [
+        {
+          "id": 24,
+          "time": "2022-03-04T05:33:34.309Z",
+          "perk": "picturesque",
+          "blurb_text": "[{\"page_no\":0,\"image\":\"Neutral_1\",\"text\":\"Wow, what a beautiful view!\"},{\"page_no\":1,\"image\":\"Exhausted\",\"text\":\"Really makes this whole thing worth it!\"}]",
+          "deactivated_time": null
+        },
+        {
+          "id": 23,
+          "time": "2022-03-04T05:32:47.330Z",
+          "perk": "sick",
+          "blurb_text": "[{\"page_no\":0,\"image\":\"Neutral_1\",\"text\":\"I'm not feeling so good...\"},{\"page_no\":1,\"image\":\"Unhappy\",\"text\":\"Maybe it's time to change my water filter.\"}]",
+          "deactivated_time": null
+        },
+        {
+          "id": 22,
+          "time": "2022-03-04T05:29:41.065Z",
+          "perk": "wildlife",
+          "blurb_text": "[{\"page_no\":0,\"image\":\"Neutral_1\",\"text\":\"Nature is one of the neatest things on the planet\"},{\"page_no\":1,\"image\":\"Worried\",\"text\":\"So I made this program to tell you how neat it is\"},{\"page_no\":2,\"image\":\"Delighted\",\"text\":\"That way it's not just me and Alex knowin' it!\"}]",
+          "deactivated_time": null
+        },
+      ],
       expression:"Neutral_2",
-      perks:["exceptional_wildlife", "picturesque", "well_rested", "inspired"],
+      perks:["wildlife", "picturesque", "well_rested", "inspired"],
       blurb:"I'm finally getting my hiker-legs. About Time! ",
       location:"Pennsylvania",
       timestamp:"1644363203741",
       miles:"1234",
-      scene: "hike_cades_cove"
+      scene: "hike_green_tunnel"
     }
 
   },
@@ -50,10 +75,11 @@ const store = new Vuex.Store({
       state.live.perks = new_state.perks.split(',');
       state.live.expression = new_state.expression;
       state.live.blurb = new_state.blurb;
+      state.live.blurbs = new_state.blurbs;
       state.live.location = new_state.location;
       state.live.timestamp = new_state.timestamp;
       state.live.miles = new_state.miles;
-      state.live.scene = new_state.scene;
+      state.live.scene = get_scene(new_state.scene);
     },
     set_mode(state, mode) {
       state.mode = mode;

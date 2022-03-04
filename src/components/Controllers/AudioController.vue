@@ -32,11 +32,10 @@
   const wanna_go_home = 'wanna_go_home';
   const rest_day = 'rest_day';
 
-
   export const songs = {
     an_echo: {src: '/audio/music/an_echo.mp3', title:'An Echo', artist: 'Alex Moliski'},
     an_echo_clean: {src: '/audio/music/an_echo_clean.mp3', title:'An Echo', artist: 'Alex Moliski'},
-    the_grind: {src: '/audio/music/the_grind.mp3', title:'The Grind', artist: 'Alex Moliski'},
+    the_grind: {src: '/audio/music/the_grind_extended.mp3', title:'The Grind', artist: 'Alex Moliski'},
     midday_diddle: {src: '/audio/music/midday_diddle.mp3', title:'Midday Diddle', artist: 'Alex Moliski'},
     hare_and_humming_bird: {src: '/audio/music/hare_and_humming_bird.mp3', title:'The Hare and the Hummingbird', artist: 'Alex Moliski'},
     hare_and_humming_bird_clean: {src: '/audio/music/hare_and_humming_bird_clean.mp3', title:'The Hare and the Hummingbird', artist: 'Alex Moliski'},
@@ -46,8 +45,9 @@
     pyre_on_the_path_clean: {src: '/audio/music/pyre_on_the_path_clean.mp3', title:'Pyre on the Path', artist: 'Alex Moliski'},
     good_night: {src: '/audio/music/good_night.mp3', title:'Good Night', artist: 'Alex Moliski'},
     wanna_go_home: {src: '/audio/music/wanna_go_home.mp3', title:'I Wanna Go Home', artist: 'Adam Moliski'},
-    rest_day: {src: '/audio/music/rest_day.mp3', title:'Rest Day', artist: 'Alex Moliski'},
+    rest_day: {src: '/audio/music/rest_day_extended.mp3', title:'Rest Day', artist: 'Alex Moliski'},
   }
+
   export default {
     name: "AudioController",
     props: ['loading', 'audio_enabled'],
@@ -68,6 +68,7 @@
       desired_song() {
         const scene = this.$store.getters.active.scene;
         const disposition = this.$store.getters.active.morale;
+        const fortitude = this.$store.getters.active.fortitude;
         switch(scene) {
           case "hike_cades_cove":
           case "hike_green_tunnel":
@@ -78,6 +79,9 @@
             }
             if (disposition > 30) {
               return left_right_left;
+            }
+            if (disposition > 2 && fortitude > 2) {
+              return the_grind;
             }
             else {
               return wanna_go_home;
@@ -168,7 +172,7 @@
     bottom:0;
     left:0;
     right: 0;
-    z-index: 10000;
+    z-index: 19;
     display: flex;
     align-items: center;
     @media screen and (min-width: 800px) {
@@ -176,7 +180,7 @@
       margin-left: -33px;
     }
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
 
     .song_display{
       transition: opacity 0.5s;
@@ -191,7 +195,7 @@
       display: flex;
       flex-direction: row;
       .song_title {
-        font-weight: lighten;
+        font-weight: lighter;
         text-align: start;
         color: #fbefe0;
         font-size: 1.5em;

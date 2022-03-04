@@ -100,6 +100,9 @@ export default {
     padding: 0;
     margin: 0;
   }
+  button {
+    user-select: none;
+  }
   #nav {
     padding: 0;
 

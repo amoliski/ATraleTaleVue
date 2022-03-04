@@ -37,7 +37,9 @@
         <div class="top_right" style="width: 140px" v-if="!live_mode">
           <BorderButton @click="info_display_open = !info_display_open">
             <div class="about_button">
-              <div class="icon">?</div>
+              <div class="icon">
+                <img src="@/assets/question.png"/>
+              </div>
               <div class="text">About</div>
             </div>
           </BorderButton>
@@ -63,7 +65,6 @@
       <div class="row">
 
         <div style="display: flex; flex-direction: column; align-self: flex-end">
-          <AvatarBox :image="$store.getters.active.expression" v-if="live_mode"></AvatarBox>
           <StatBars></StatBars>
         </div>
 
@@ -74,7 +75,7 @@
           </BorderBox>
         </div>
         <div style="display: flex; flex-direction: column">
-          <div style="color: white; font-size: 1.25em; margin-bottom: 5px; user-select: none">Click to change</div>
+          <div v-if="!live_mode" style="color: white; font-size: 1.25em; margin-bottom: 5px; user-select: none">Click to change</div>
           <div style="display: flex; flex-direction: row;" v-if="!live_mode">
             <BorderButton @click="scene_editor_open = !scene_editor_open">
               <div class="scene_mood_button">
@@ -154,10 +155,18 @@ import MoraleDemo from "./MoraleDemo";
     height: 100%;
     width: 100%;
     color: #36634d;
+    z-index: 100;
+    pointer-events: none;
+    img{
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
     button {
       background-color: transparent;
       border: none;
       cursor: pointer;
+      pointer-events: all;
     }
     .zigzag::before {
       position: absolute;
@@ -177,9 +186,8 @@ import MoraleDemo from "./MoraleDemo";
       align-items: center;
       width: 85px;
       height: 85px;
-      .icon {
-        margin-top: -5px;
-        font-size: 4em;
+      .icon img{
+        width: 45px;
       }
       .text {
         font-size: 1.6em;

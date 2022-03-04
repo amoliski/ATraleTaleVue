@@ -114,6 +114,7 @@ export default {
 .__morale_demo__ {
   user-select: none;
   position: absolute;
+  pointer-events: all;
   top: 0;
   bottom: 0;
   left: 0;

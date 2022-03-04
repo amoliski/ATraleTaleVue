@@ -5,7 +5,7 @@
            :class="{inverted:active, shadow}"
            :style="{
               padding: `${padding}px`,
-              borderWidth: `${border_size}px`,
+              borderWidth: `${border_width || border_size}px`,
               borderImageWidth: `${border_size}px`,
             }">
         <div class="btn_content">
@@ -34,6 +34,9 @@ export default {
     },
     border_size: {
       default: 22,
+    },
+    border_width: {
+      default: null,
     }
   },
 }
@@ -41,6 +44,8 @@ export default {
 
 <style lang="scss">
 .__border_button__ {
+  font-family: 'Pexico';
+
   .btn_content{
     padding-top: .25em;
     padding-bottom: .25em;
@@ -49,6 +54,9 @@ export default {
     margin: 0;
     padding: 0;
     color: #36634d;
+    background: transparent;
+    border: none;
+    cursor: pointer;
   }
   &.disabled{
     opacity: 0.5;

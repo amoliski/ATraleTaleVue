@@ -1,5 +1,5 @@
 <template>
-  <div class="__avatar_box__">
+  <div class="__avatar_box__" @click="click">
     <component :is="box_element" padding="1">
       <div class="character"
            :style="{background: image_bg_color
@@ -8,10 +8,8 @@
       </div>
     </component>
     <component v-if="dialog_box" :is="box_element" :style="{transform: `translateX(-${border_size}px)`}">
-      <div class="textField"
-           :style="{color: text_color, background: text_bg_color}"
-      >
-        "{{$store.getters.active.blurb}}"
+      <div class="textField" :style="{color: text_color, background: text_bg_color}">
+        "{{displayed_text}}"
       </div>
     </component>
   </div>
@@ -29,6 +27,9 @@ export default {
   props: {
     size: {
       default: 128,
+    },
+    content: {
+      default: '',
     },
     image: {
       default: 'Neutral_1',
@@ -54,7 +55,15 @@ export default {
       interval: null,
     };
   },
+  methods: {
+    click() {
+      this.$emit('click');
+    }
+  },
   computed: {
+    displayed_text() {
+      return this.content ? this.content : this.$store.getters.active.blurb;
+    },
     box_element() {
       return this.border ? Border_box : 'div';
     },
@@ -78,6 +87,7 @@ export default {
   position: relative;
   flex-direction: row;
   margin-bottom: 5px;
+  pointer-events: all;
   .textField{
     height: 100%;
     width: 300px;

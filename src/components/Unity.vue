@@ -80,8 +80,14 @@ export default {
   height: 100%;
   overflow: hidden;
   canvas {
-    height: 100vh;
+    height: calc(100vh - 50px);
     width: 100vw;
+    @media screen and (min-width: 800px){
+      height: 100vh;
+    }
+  }
+  #unity_canvas {
+
   }
 }
 </style>

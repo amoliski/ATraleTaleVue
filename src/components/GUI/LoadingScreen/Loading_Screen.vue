@@ -53,7 +53,7 @@ export default {
 <style lang="scss">
 .__loading_screen__ {
   background:#36634d;
-  z-index: 10;
+  z-index: 90;
   color: #f1dfcb;
   box-sizing: border-box;
   display: grid;
